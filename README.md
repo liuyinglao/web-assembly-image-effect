@@ -17,8 +17,20 @@
     5. in `main.js` load the `rustApp`, our wasm module
     6. in `webpack.config.js`, flag the `pkg` module as WebAssembly module
 5. Build the rust module to do the grayscale
-expose js function to rust
-convert a js val to rust val with `into()`
+    1. expose js function to rust
+    2. convert a js val to rust val with `into()`
+6. Decode Base64
+    1. add crate "image" and "base64" in `Cargo.toml`
+    2. decode the encoded string and unwrap to get the image in type `Vec<u8>`
+    3. `image::load_from_memory` to get `DynamicImage`
+    4. apply `img.grayscale()`
+    5. `write_to` a buffer of type `Vec<u8>`
+    6. `encode` the `buffer` in `String`
+    7. add the header back
+    8. render the image in js
+7. Deploy
+    1. `npm run build`
+    2. push to github 
 
 
 
